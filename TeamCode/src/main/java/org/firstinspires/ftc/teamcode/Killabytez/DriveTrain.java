@@ -30,10 +30,10 @@ public class DriveTrain {
         float turn = gamepadrightx;
         float drive = gamepadlefty;
 
-        double FR = -strafe + drive + turn;
-        double FL = +strafe + drive - turn;
-        double BR = +strafe + drive + turn;
-        double BL = -strafe + drive - turn;
+        double FR = +strafe + drive + turn;
+        double FL = -strafe + drive - turn;
+        double BR = -strafe + drive + turn;
+        double BL = +strafe + drive - turn;
 
         fr.setPower(FR);
         fl.setPower(FL);

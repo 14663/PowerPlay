@@ -1,9 +1,11 @@
 package org.firstinspires.ftc.teamcode.Killabytez;
 
+import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+@Config
 public class DriveTrain {
     public DcMotor bl, br, fl, fr;
 
@@ -42,4 +44,6 @@ public class DriveTrain {
 
 
     }
+
+
 }

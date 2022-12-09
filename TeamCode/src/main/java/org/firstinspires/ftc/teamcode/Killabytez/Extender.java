@@ -46,5 +46,7 @@ public class Extender {
 
     }
 
-
+    public DcMotor getExtender() {
+        return extender;
+    }
 }

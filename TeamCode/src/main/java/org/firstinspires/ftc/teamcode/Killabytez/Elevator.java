@@ -54,4 +54,8 @@ public class Elevator {
 
         elevator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
+
+    public DcMotor getElevator() {
+        return elevator;
+    }
 }

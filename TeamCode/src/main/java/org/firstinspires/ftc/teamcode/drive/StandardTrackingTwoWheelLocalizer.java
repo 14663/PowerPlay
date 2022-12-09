@@ -38,7 +38,7 @@ public class StandardTrackingTwoWheelLocalizer extends TwoTrackingWheelLocalizer
     public static double GEAR_RATIO = 1; // output (wheel) speed / input (encoder) speed
 
     public static double LATERAL_DISTANCE = 10.25; // in; distance between the left and right wheels
-    public static double FORWARD_OFFSET = 5.75; // in; offset of the lateral wheel
+    public static double FORWARD_OFFSET = -5.75; // in; offset of the lateral wheel
 
     public static double X_MULTIPLIER = 1; // Multiplier in the X direction
     public static double Y_MULTIPLIER = 1;
@@ -57,8 +57,8 @@ public class StandardTrackingTwoWheelLocalizer extends TwoTrackingWheelLocalizer
 
     public StandardTrackingTwoWheelLocalizer(HardwareMap hardwareMap, SampleMecanumDrive drive) {
         super(Arrays.asList(
-                new Pose2d(PARALLEL_X, PARALLEL_Y, 0),
-                new Pose2d(PERPENDICULAR_X, PERPENDICULAR_Y, Math.toRadians(90))
+                new Pose2d(0, LATERAL_DISTANCE / 2, 0),
+                new Pose2d(FORWARD_OFFSET, 0, Math.toRadians(90))
         ));
 
         this.drive = drive;
@@ -67,6 +67,8 @@ public class StandardTrackingTwoWheelLocalizer extends TwoTrackingWheelLocalizer
         perpendicularEncoder = new Encoder(hardwareMap.get(DcMotorEx.class, "bl"));
 
         // TODO: reverse any encoders using Encoder.setDirection(Encoder.Direction.REVERSE)
+        parallelEncoder.setDirection(Encoder.Direction.REVERSE);
+        perpendicularEncoder.setDirection(Encoder.Direction.REVERSE);
     }
 
     public StandardTrackingTwoWheelLocalizer(@NonNull List<Pose2d> wheelPoses) {

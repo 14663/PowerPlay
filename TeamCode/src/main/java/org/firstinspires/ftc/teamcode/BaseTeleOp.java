@@ -36,6 +36,7 @@ public class BaseTeleOp extends LinearOpMode {
             processor.init();
         }
 
+        waitForStart();
        // claw = new Claw(hardwareMap);
         while (opModeIsActive()) {
             for(BaseProcessor processor: teleOpProcessors) {

@@ -40,8 +40,7 @@ public class BaseAutonomous extends LinearOpMode {
             processor.init();
         }
 
-        // Send telemetry message to signify robot waiting;
-        telemetry.addData("Say", "Hello Driver");    //
+        telemetry.addData("Just Say", "Hello Driver");    //
 
         telemetry.update();
 

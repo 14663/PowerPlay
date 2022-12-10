@@ -17,9 +17,13 @@ public class KillabytezRobot {
     public void init(HardwareMap hardwareMap) {
         this.hardwareMap=hardwareMap;
         Claw claw=new Claw(hardwareMap);
+        claw.init();
         DriveTrain drivetrain=new DriveTrain(hardwareMap);
+        drivetrain.init();
         Elevator elevator=new Elevator(hardwareMap);
+        elevator.init();
         Extender extender=new Extender(hardwareMap);
+        extender.init();
     }
 
     public Claw getClaw() {

@@ -6,12 +6,13 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Elevator {
     public DcMotor elevator;
-    public int low = 0;
-    public int mid = 1100;
-    public int high = 2400;
-
+    private HardwareMap hardwareMap;
 
     public Elevator(HardwareMap hardwareMap) {
+        this.hardwareMap=hardwareMap;
+    }
+
+    public void init() {
         elevator = hardwareMap.get(DcMotor.class, "elevator");
 
         elevator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -39,6 +40,7 @@ public class Elevator {
 
         elevator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
+
     public void reset(double power) {
         elevator.setTargetPosition(0);
 

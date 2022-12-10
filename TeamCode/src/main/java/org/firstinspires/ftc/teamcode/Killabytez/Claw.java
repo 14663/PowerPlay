@@ -1,39 +1,53 @@
 package org.firstinspires.ftc.teamcode.Killabytez;
 
-import com.qualcomm.robotcore.hardware.CRServo;
-import com.qualcomm.robotcore.hardware.DcMotor;
+import static org.firstinspires.ftc.teamcode.util.Constants.CLAW_CLOSED;
+import static org.firstinspires.ftc.teamcode.util.Constants.CLAW_OPEN;
+import static org.firstinspires.ftc.teamcode.util.Constants.WRIST_CLOSED;
+import static org.firstinspires.ftc.teamcode.util.Constants.WRIST_OPEN;
+
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
+import org.firstinspires.ftc.teamcode.util.Constants;
 
 public class Claw {
-    private Servo Claw;
-    private Servo Wrist;
-
-
-    private int close = 1;
-    private int open = 0;
+    private Servo claw;
+    private Servo wrist;
+    private HardwareMap hardwareMap;
 
     public Claw(HardwareMap hardwareMap) {
-        Claw = hardwareMap.get(Servo.class,"claw");
-        Wrist = hardwareMap.get(Servo.class, "wrist");
+        this.hardwareMap=hardwareMap;
+    }
 
+    public void init() {
+        claw = hardwareMap.get(Servo.class,"claw");
+        wrist = hardwareMap.get(Servo.class, "wrist");
     }
 
     public void closeClaw() {
-        Claw.setPosition(close);
+        claw.setPosition(CLAW_CLOSED);
     }
     public void openClaw() {
-        Claw.setPosition(open);
+        claw.setPosition(CLAW_OPEN);
     }
-    public void setClawPos(double pos) { Claw.setPosition(pos);}
+    public void setClawPos(double pos) {
+        claw.setPosition(pos);
+    }
 
-    public void closeWrist() { Wrist.setPosition(open);}
-    public void openWrist() {Wrist.setPosition(close);}
-    public void setWristPos(double pos) { Wrist.setPosition(pos);}
+    public void closeWrist() {
+        wrist.setPosition(WRIST_OPEN);
+    }
+    public void openWrist() {
+        wrist.setPosition(WRIST_CLOSED);
+    }
+    public void setWristPos(double pos) {
+        wrist.setPosition(pos);
+    }
 
+    public Servo getClaw() {
+        return claw;
+    }
 
-
-
-
-
+    public Servo getWrist() {
+        return wrist;
+    }
 }

@@ -2,11 +2,9 @@ package org.firstinspires.ftc.teamcode.Processors;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
-public class ExtenderAutoProcessor extends BaseProcessor{
-    private int encoderTicks;
-    ExtenderAutoProcessor(LinearOpMode opMode, int encoderTicks) {
+public class VisualizationAutoProcessor extends BaseProcessor{
+    VisualizationAutoProcessor(LinearOpMode opMode) {
         super(opMode);
-        this.encoderTicks=encoderTicks;
     }
 
     @Override

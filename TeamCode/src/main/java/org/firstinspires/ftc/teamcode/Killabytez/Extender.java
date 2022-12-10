@@ -5,10 +5,15 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Extender {
     DcMotor extender;
+    HardwareMap hardwareMap;
     private int originPos = 0;
     private int noPow = 0;
 
     public Extender(HardwareMap hardwareMap) {
+        this.hardwareMap=hardwareMap;
+    }
+
+    public void init() {
         extender = hardwareMap.get(DcMotor.class, "extender");
         extender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 

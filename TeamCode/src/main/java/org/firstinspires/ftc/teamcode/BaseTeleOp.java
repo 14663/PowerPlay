@@ -24,7 +24,7 @@ public class BaseTeleOp extends LinearOpMode {
         teleOpProcessors = Arrays.asList(
                 new ElevatorTeleOpProcessor(this),
                 new ExtenderTeleOpProcessor(this),
-                new ClawTeleOpProcessor(this),
+//                new ClawTeleOpProcessor(this),
                 new MovementTeleOpProcessor(this)
         );
         killabytezRobot=new KillabytezRobot();

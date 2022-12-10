@@ -1,14 +1,19 @@
 package org.firstinspires.ftc.teamcode.Killabytez;
 
+import static org.firstinspires.ftc.teamcode.util.Constants.parameters;
+
 import com.acmerobotics.dashboard.config.Config;
+import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 @Config
 public class DriveTrain {
-    public DcMotor bl, br, fl, fr;
+    private DcMotor bl, br, fl, fr;
     private HardwareMap hardwareMap;
     private double speedConstantTeleOp =1;
+    private BNO055IMU imu;
 
     public enum Wheel {
         BL, BR, FL, FR;
@@ -34,6 +39,19 @@ public class DriveTrain {
         bl.setDirection(DcMotor.Direction.REVERSE);
         fl.setDirection(DcMotor.Direction.REVERSE);
         // Add IMU and set initial state to IDLE
+        initGyro();
+    }
+
+    public void initGyro(){
+        parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
+        parameters.accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
+        parameters.loggingEnabled = true;
+        parameters.loggingTag = "IMU";
+        parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
+
+        //
+        imu = hardwareMap.get(BNO055IMU.class, "imu");
+        imu.initialize(parameters);
     }
 
     public void drivingTeleop(float gamepadleftx, float gamepadlefty, float gamepadrightx) {
@@ -54,6 +72,10 @@ public class DriveTrain {
 
     public void setSpeedConstantTeleOp(double speedConstantTeleOp) {
         this.speedConstantTeleOp = speedConstantTeleOp;
+    }
+
+    public BNO055IMU getImu() {
+        return imu;
     }
 
     public DcMotor getWheel(Wheel wheel) {

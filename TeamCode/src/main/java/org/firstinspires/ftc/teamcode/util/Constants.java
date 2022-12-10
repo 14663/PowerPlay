@@ -1,5 +1,9 @@
 package org.firstinspires.ftc.teamcode.util;
 
+import com.qualcomm.hardware.bosch.BNO055IMU;
+
+import org.firstinspires.ftc.robotcore.external.navigation.Acceleration;
+import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 
@@ -51,4 +55,21 @@ public class Constants {
     public static final double BICEP_CLOSED=1;
     public static final double CLASP_OPEN=0;
     public static final double CLASP_CLOSED=1;
+
+    //28 * 20 / (2ppi * 4.125)
+    public static final Double WIDTH = 13.0; //inches
+    public static final Integer CPR = 28; //counts per rotation
+    public static final Integer GEAR_RATIO = 20;
+    public static final Double DIAMETER = 3.77;
+    public static final Double CPI = (CPR * GEAR_RATIO)/(Math.PI * DIAMETER); //counts per inch, 28cpr * gear ratio / (2 * pi * diameter (in inches, in the center))
+    public static final Double BIAS = 1.0;//default 0.8
+    public static final Double MECCY_BIAS = 0.9;//change to adjust only strafing movement
+    //
+    public static final Double CONVERSION = CPI * BIAS;
+    public static Boolean EXIT = false;
+    //
+    public static Orientation angles;
+    public static Acceleration gravity;
+    public static BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
+
 }

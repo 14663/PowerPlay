@@ -1,0 +1,21 @@
+Gamepad 2
+
+dpad_up=pull bicep up
+dpad_down=bicep down
+dpad_right=open clasp
+dpad_left=close clasp
+left_bumper=close claw
+right_bumper=open claw
+back button=wrist up
+left stick button=wrist down
+a=high elevator
+b=mid elevator
+x=low elevator
+y=elevator reset
+left_trigger=extending
+right_trigger=retracting
+
+Gamepad 1
+
+left_bumper=slow movement
+right_bumper=normal movement

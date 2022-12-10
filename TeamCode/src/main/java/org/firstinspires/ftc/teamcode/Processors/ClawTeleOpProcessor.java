@@ -14,7 +14,9 @@ public class ClawTeleOpProcessor extends BaseProcessor {
 
     @Override
     public void process() {
-        if (getGamepad(2).left_bumper)getKillabytezRobot().getClaw().closeClaw();
-        if (getGamepad(2).right_bumper)getKillabytezRobot().getClaw().openClaw();
+        if (getGamepad(2).left_bumper) getKillabytezRobot().getClaw().closeClaw();
+        if (getGamepad(2).right_bumper) getKillabytezRobot().getClaw().openClaw();
+        if(getGamepad(2).back) getKillabytezRobot().getClaw().closeWrist();
+        if(getGamepad(2).left_stick_button) getKillabytezRobot().getClaw().openWrist();
     }
 }

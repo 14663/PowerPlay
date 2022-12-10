@@ -1,7 +1,7 @@
 package org.firstinspires.ftc.teamcode.util;
 
-import org.opencv.core.Scalar;
 import org.opencv.core.Point;
+import org.opencv.core.Scalar;
 
 public class Constants {
     //Defines encoder multipliers
@@ -30,6 +30,7 @@ public class Constants {
     public static final double SLOW_SPEED_CONSTANT_TELEOP=0.7;
     public static final double NORMAL_SPEED_CONSTANT_TELEOP=1;
 
+
     public static final Point REGION1_TLEFT = new Point(75,195);
     public static final Point REGION1_BRIGHT = new Point(165,235);
 
@@ -44,4 +45,10 @@ public class Constants {
         TWO,
         THREE
     }
+
+    //bicep constants
+    public static final double BICEP_OPEN=0;
+    public static final double BICEP_CLOSED=1;
+    public static final double CLASP_OPEN=0;
+    public static final double CLASP_CLOSED=1;
 }

@@ -19,16 +19,16 @@ public class ElevatorTeleOpProcessor extends BaseProcessor {
 
     @Override
     public void process() {
-        if (getGamepad(1).a)
+        if (getGamepad(2).a)
             getKillabytezRobot().getElevator().lifting(HIGH_ELEVATOR_HEIGHT, ELEVATOR_POWER);
 
-        if (getGamepad(1).b)
+        if (getGamepad(2).b)
             getKillabytezRobot().getElevator().lifting(MID_ELEVATOR_HEIGHT, ELEVATOR_POWER);
 
-        if (getGamepad(1).x)
+        if (getGamepad(2).x)
             getKillabytezRobot().getElevator().lifting(LOW_ELEVATOR_HEIGHT, ELEVATOR_POWER);
 
-        if (getGamepad(1).y)
+        if (getGamepad(2).y)
             getKillabytezRobot().getElevator().reset(ELEVATOR_POWER);
     }
 }

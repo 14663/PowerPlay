@@ -10,22 +10,28 @@ public class KillabytezRobot {
     Claw claw;
     Elevator elevator;
     Extender extender;
+    Bicep bicep;
 
     public KillabytezRobot() {
     }
 
     public void init(HardwareMap hardwareMap) {
         this.hardwareMap=hardwareMap;
-        Claw claw=new Claw(hardwareMap);
+        claw=new Claw(hardwareMap);
         claw.init();
-        DriveTrain drivetrain=new DriveTrain(hardwareMap);
+        bicep=new Bicep(hardwareMap);
+        bicep.init();
+        drivetrain=new DriveTrain(hardwareMap);
         drivetrain.init();
-        Elevator elevator=new Elevator(hardwareMap);
+        elevator=new Elevator(hardwareMap);
         elevator.init();
-        Extender extender=new Extender(hardwareMap);
+        extender=new Extender(hardwareMap);
         extender.init();
     }
 
+    public Bicep getBicep() {
+        return bicep;
+    }
     public Claw getClaw() {
         return claw;
     }

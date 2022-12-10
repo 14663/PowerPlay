@@ -22,7 +22,7 @@ public class Extender {
     }
 
     public void extending(int encoderTicks, double power) {
-        int newLeftLiftTarget = extender.getCurrentPosition() + encoderTicks;
+        int newLeftLiftTarget = encoderTicks;
 
         extender.setTargetPosition(newLeftLiftTarget);
         extender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -36,7 +36,6 @@ public class Extender {
         extender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
     public void reset(double power) {
-
         extender.setTargetPosition(originPos);
         extender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 

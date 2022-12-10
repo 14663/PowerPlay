@@ -14,7 +14,8 @@ public class ExtenderTeleOpProcessor extends BaseProcessor {
 
     @Override
     public void process() {
-        if(getGamepad(2).left_bumper) getKillabytezRobot().getExtender().extending(0, -1.0);
-        if(getGamepad(2).right_bumper) getKillabytezRobot().getExtender().extending(-1100, 0.8);
+        if(getGamepad(2).right_stick_button) getKillabytezRobot().getExtender().extending(-1100, 0.8);
+        if(getGamepad(2).left_stick_button) getKillabytezRobot().getExtender().extending(0, -1.0);
+
     }
 }

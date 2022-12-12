@@ -30,5 +30,6 @@ public class ElevatorTeleOpProcessor extends BaseProcessor {
 
         if (getGamepad(2).y)
             getKillabytezRobot().getElevator().reset(ELEVATOR_POWER);
+        if(getGamepad(2).a || getGamepad(2).b || getGamepad(2).x || getGamepad(2).y) getKillabytezRobot().getClaw().closeWrist();
     }
 }

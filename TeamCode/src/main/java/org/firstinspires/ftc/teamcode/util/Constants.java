@@ -19,15 +19,15 @@ public class Constants {
     public static final double WHEEL_DIAMETER_INCHES = 1.49606;
 
     //claw constants
-    public static final double CLAW_OPEN=0;
-    public static final double CLAW_CLOSED=1;
-    public static final double WRIST_OPEN=0;
-    public static final double WRIST_CLOSED=1;
+    public static final double CLAW_OPEN=0.2;
+    public static final double CLAW_CLOSED=0.85;
+    public static final double WRIST_OPEN=0.8;
+    public static final double WRIST_CLOSED=0;
 
     //elevator constants
     public static final int LOW_ELEVATOR_HEIGHT = 0;
     public static final int MID_ELEVATOR_HEIGHT = 1100;
-    public static final int HIGH_ELEVATOR_HEIGHT = 2400;
+    public static final int HIGH_ELEVATOR_HEIGHT = 2300;
     public static final double ELEVATOR_POWER =0.75;
 
     //movement constants
@@ -53,8 +53,8 @@ public class Constants {
     //bicep constants
     public static final double BICEP_OPEN=0;
     public static final double BICEP_CLOSED=1;
+    public static final double CLASP_CLOSED=0.3;
     public static final double CLASP_OPEN=0;
-    public static final double CLASP_CLOSED=1;
 
     //28 * 20 / (2ppi * 4.125)
     public static final Double WIDTH = 13.0; //inches
@@ -71,5 +71,10 @@ public class Constants {
     public static Orientation angles;
     public static Acceleration gravity;
     public static BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
+
+    public static final int EXTENDER_OUT_TICKS=-1100;
+    public static final double EXTENDER_OUT_POWER=0.8;
+    public static final int EXTENDER_IN_TICKS=0;
+    public static final double EXTENDER_IN_POWER=-1.0;
 
 }

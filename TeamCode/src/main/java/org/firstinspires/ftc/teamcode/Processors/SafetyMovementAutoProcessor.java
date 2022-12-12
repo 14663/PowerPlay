@@ -19,9 +19,10 @@ import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.teamcode.Killabytez.DriveTrain;
 
 public class SafetyMovementAutoProcessor extends BaseProcessor {
-
-    SafetyMovementAutoProcessor(LinearOpMode opMode) {
+    boolean right;
+    public SafetyMovementAutoProcessor(LinearOpMode opMode, boolean right) {
         super(opMode);
+        this.right=right;
     }
 
     DcMotor backleft, frontleft, backright, frontright;
@@ -36,7 +37,7 @@ public class SafetyMovementAutoProcessor extends BaseProcessor {
 
     @Override
     public void process() {
-
+        strafeToPosition(30, right?0.5:-0.5);
     }
 
     public void moveToPosition(double inches, double speed){

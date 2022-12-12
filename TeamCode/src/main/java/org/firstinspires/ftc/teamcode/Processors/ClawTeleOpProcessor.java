@@ -1,28 +1,48 @@
 package org.firstinspires.ftc.teamcode.Processors;
 
-import static org.firstinspires.ftc.teamcode.util.Constants.CLAW_CLOSED;
-import static org.firstinspires.ftc.teamcode.util.Constants.CLAW_OPEN;
+import static org.firstinspires.ftc.teamcode.util.Constants.EXTENDER_IN_POWER;
+import static org.firstinspires.ftc.teamcode.util.Constants.EXTENDER_IN_TICKS;
+import static org.firstinspires.ftc.teamcode.util.Constants.EXTENDER_OUT_POWER;
+import static org.firstinspires.ftc.teamcode.util.Constants.EXTENDER_OUT_TICKS;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.Servo;
 
 public class ClawTeleOpProcessor extends BaseProcessor {
-    Servo claw;
-    Servo wrist;
+    boolean extended=false;
+
     public ClawTeleOpProcessor(LinearOpMode opMode) {
         super(opMode);
     }
 
     @Override
     public void init() {
-       claw=opMode.hardwareMap.get(Servo.class, "claw");
-       wrist=opMode.hardwareMap.get(Servo.class, "wrist");
+        getKillabytezRobot().getClaw().init();
     }
 
     @Override
     public void process() {
-        claw.setPosition(0.8);
-        sleep(1500);
-        claw.setPosition(0.3);
+        if(getGamepad(2).right_trigger>0 && !extended) {
+            getKillabytezRobot().getClaw().closeWrist();
+            getKillabytezRobot().getClaw().openClaw();
+            getKillabytezRobot().getExtender().extending(EXTENDER_OUT_TICKS, EXTENDER_OUT_POWER);
+            while(getKillabytezRobot().getExtender().getExtender().isBusy()) {
+
+            }
+            getKillabytezRobot().getClaw().closeWrist();
+            getKillabytezRobot().getClaw().closeClaw();
+            extended=true;
+        }
+        if(getGamepad(2).left_trigger>0 && extended) {
+            getKillabytezRobot().getExtender().extending(EXTENDER_IN_TICKS, EXTENDER_IN_POWER);
+            while(getKillabytezRobot().getExtender().getExtender().isBusy()) {
+            }
+            getKillabytezRobot().getClaw().openWrist();
+            getKillabytezRobot().getBicep().closeClasp();
+            sleep(1500);
+            getKillabytezRobot().getClaw().openClaw();
+            getKillabytezRobot().getBicep().openBicep();
+            extended=false;
+        }
+
     }
 }

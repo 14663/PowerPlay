@@ -21,6 +21,7 @@ public class Claw {
     public void init() {
         claw = hardwareMap.get(Servo.class,"claw");
         wrist = hardwareMap.get(Servo.class, "wrist");
+        claw.setPosition(CLAW_OPEN);
     }
 
     public void closeClaw() {

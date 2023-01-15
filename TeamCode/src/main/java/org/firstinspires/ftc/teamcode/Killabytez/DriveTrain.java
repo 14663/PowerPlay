@@ -46,7 +46,7 @@ public class DriveTrain {
         parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
         parameters.accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
         parameters.loggingEnabled = true;
-        parameters.loggingTag = "IMU";
+        parameters.loggingTag = "imu";
         parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
 
         //
@@ -59,10 +59,10 @@ public class DriveTrain {
         float turn = gamepadrightx;
         float drive = gamepadlefty;
 
-        double FR = +strafe + drive + turn;
-        double FL = -strafe + drive - turn;
-        double BR = -strafe + drive + turn;
-        double BL = +strafe + drive - turn;
+        double FR = -strafe + drive - turn;
+        double FL = strafe + drive + turn;
+        double BR = strafe + drive - turn;
+        double BL = -strafe + drive + turn;
 
         fr.setPower(FR* speedConstantTeleOp);
         fl.setPower(FL* speedConstantTeleOp);

@@ -88,7 +88,6 @@ public class RegressionUtil {
                     double time = timeSamples.get(i);
                     double pos = positionSamples.get(i);
                     double power = powerSamples.get(i);
-                    pw.println(time + "," + pos + "," + power);
                 }
             } catch (FileNotFoundException e) {
                 // ignore

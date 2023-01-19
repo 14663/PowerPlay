@@ -21,10 +21,8 @@ public class ElevatorTesting extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         robot.init(hardwareMap);
 
-        robot.getExtender().extending(lifting, pow);
-
         sleep(500);
-        robot.getExtender().reset(pow);
+        robot.getElevator().reset(pow);
 
 
 

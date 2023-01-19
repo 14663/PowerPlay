@@ -4,19 +4,32 @@ import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 import org.firstinspires.ftc.teamcode.Killabytez.Elevator;
+
+import java.util.concurrent.BrokenBarrierException;
+import java.util.concurrent.CyclicBarrier;
 
 @Config
 @Autonomous
 public class ExtenderTesting extends LinearOpMode {
     public static int lifting = 500;
     public static double pow = 0.4;
-    DcMotor leftExtender= hardwareMap.get(DcMotor.class, "leftextender");;
-    DcMotor rightExtender=hardwareMap.get(DcMotor.class, "rightextender");
+    DcMotorEx leftExtender, rightExtender;
+
+    final CyclicBarrier gate=new CyclicBarrier(3);
+
     Thread leftExtending=new Thread (new Runnable() {
         public void run() {
+            try {
+                gate.await();
+            } catch (BrokenBarrierException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
             leftExtender.setTargetPosition(lifting);
             leftExtender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             leftExtender.setPower(pow);
@@ -24,14 +37,22 @@ public class ExtenderTesting extends LinearOpMode {
     });
     Thread rightExtending=new Thread (new Runnable() {
         public void run() {
-            rightExtender.setTargetPosition(lifting);
+            try {
+                gate.await();
+            } catch (BrokenBarrierException e) {
+                e.printStackTrace();
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+            rightExtender.setTargetPosition(lifting/2);
             rightExtender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
             rightExtender.setPower(pow);
         }
     });
     @Override
     public void runOpMode() throws InterruptedException {
-
+        leftExtender= hardwareMap.get(DcMotorEx.class, "leftextender");;
+        rightExtender=hardwareMap.get(DcMotorEx.class, "rightextender");
         //2400 ticks to top
         //1100 ticks to mid
 
@@ -52,26 +73,30 @@ public class ExtenderTesting extends LinearOpMode {
         rightExtender.setPower(pow);
 */
         //sync leftExtending and rightExtending threads
-        leftExtending.join();
-        rightExtending.join();
         leftExtending.start();
         rightExtending.start();
+
+        try {
+            gate.await();
+        } catch (BrokenBarrierException e) {
+            e.printStackTrace();
+        }
+
+        while(leftExtender.isBusy() || rightExtender.isBusy()) {
+            telemetry.addData("hello", leftExtender.getCurrentPosition());
+            telemetry.addData("hell", rightExtender.getCurrentPosition());
+            telemetry.update();
+        }
+
         sleep(500);
         leftExtender.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         rightExtender.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
-
-        while(leftExtender.isBusy() || rightExtender.isBusy()) {
-
-
-
-        }
 
         leftExtender.setPower(0);
         rightExtender.setPower(0);
         leftExtender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightExtender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        telemetry.addData("hello", leftExtender.getCurrentPosition());
-        telemetry.addData("hell", rightExtender.getCurrentPosition());
+
         telemetry.update();
 
         /*sleep(1000);

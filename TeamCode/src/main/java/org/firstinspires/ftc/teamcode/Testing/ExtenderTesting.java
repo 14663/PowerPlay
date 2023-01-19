@@ -12,44 +12,61 @@ import org.firstinspires.ftc.teamcode.Killabytez.Elevator;
 @Autonomous
 public class ExtenderTesting extends LinearOpMode {
     public static int lifting = 500;
-    public static double pow = 0.9;
+    public static double pow = 0.4;
     @Override
     public void runOpMode() throws InterruptedException {
-        DcMotor extender;
-        extender = hardwareMap.get(DcMotor.class, "extender");
+        DcMotor leftExtender;
+        DcMotor rightExtender=hardwareMap.get(DcMotor.class, "rightextender");
+        leftExtender = hardwareMap.get(DcMotor.class, "leftextender");
+
         //2400 ticks to top
         //1100 ticks to mid
-        extender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftExtender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightExtender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
-        extender.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        extender.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftExtender.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightExtender.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        leftExtender.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightExtender.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         waitForStart();
-        extender.setTargetPosition(lifting + extender.getCurrentPosition());
-        extender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        extender.setPower(pow);
+        leftExtender.setTargetPosition(lifting + leftExtender.getCurrentPosition());
+        rightExtender.setTargetPosition(lifting + rightExtender.getCurrentPosition());
+        leftExtender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightExtender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftExtender.setPower(pow);
+        rightExtender.setPower(pow);
 
-        while(extender.isBusy()) {
+        while(leftExtender.isBusy() && rightExtender.isBusy()) {
+
+
 
         }
 
-        extender.setPower(0);
-        extender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-        telemetry.addData("hello", extender.getCurrentPosition());
+        leftExtender.setPower(0);
+        rightExtender.setPower(0);
+        leftExtender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightExtender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        telemetry.addData("hello", leftExtender.getCurrentPosition());
         telemetry.update();
 
         sleep(1000);
-        extender.setTargetPosition(0);
-        extender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-        extender.setPower(pow);
+        leftExtender.setTargetPosition(0);
+        rightExtender.setTargetPosition(0);
+        leftExtender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightExtender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftExtender.setPower(pow);
+        rightExtender.setPower(pow);
 
-        while(extender.isBusy()) {
+        while(leftExtender.isBusy()) {
 
         }
 
-        extender.setPower(0);
-        extender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftExtender.setPower(0);
+        rightExtender.setPower(0);
+        leftExtender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightExtender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
 

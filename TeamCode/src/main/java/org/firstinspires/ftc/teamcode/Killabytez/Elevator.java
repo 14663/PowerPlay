@@ -5,7 +5,8 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class Elevator {
-    public DcMotor elevator;
+    public DcMotor leftElevator;
+    public DcMotor rightElevator;
     private HardwareMap hardwareMap;
 
     public Elevator(HardwareMap hardwareMap) {
@@ -13,51 +14,73 @@ public class Elevator {
     }
 
     public void init() {
-        elevator = hardwareMap.get(DcMotor.class, "elevator");
+        leftElevator = hardwareMap.get(DcMotor.class, "leftElevator");
+        rightElevator = hardwareMap.get(DcMotor.class, "rightElevator");
 
-        elevator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftElevator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightElevator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
-        elevator.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        leftElevator.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        rightElevator.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
-        elevator.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-        elevator.setDirection(DcMotorSimple.Direction.REVERSE);
+        leftElevator.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rightElevator.setDirection(DcMotorSimple.Direction.REVERSE);
     }
 
     public void lifting(int encoderTicks, double power) {
         int newLeftLiftTarget = encoderTicks;
 
-        elevator.setTargetPosition(newLeftLiftTarget);
+        leftElevator.setTargetPosition(newLeftLiftTarget);
+        rightElevator.setTargetPosition(newLeftLiftTarget);
 
-        elevator.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftElevator.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightElevator.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        elevator.setPower(power);
+        leftElevator.setPower(power);
+        rightElevator.setPower(power);
 
-        while(elevator.isBusy()) {
+        while(leftElevator.isBusy() && rightElevator.isBusy()) {
 
         }
 
-        elevator.setPower(0);
+        leftElevator.setPower(0);
+        rightElevator.setPower(0);
 
-        elevator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftElevator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightElevator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+
     }
+
+
+
 
     public void reset(double power) {
-        elevator.setTargetPosition(0);
+        leftElevator.setTargetPosition(0);
+        rightElevator.setTargetPosition(0);
 
-        elevator.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        leftElevator.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+        rightElevator.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-        elevator.setPower(power);
+        leftElevator.setPower(power);
 
-        while(elevator.isBusy()) {
+        while(leftElevator.isBusy() && rightElevator.isBusy()) {
 
         }
 
-        elevator.setPower(0);
+        leftElevator.setPower(0);
+        rightElevator.setPower(0);
 
-        elevator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        leftElevator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightElevator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
     }
 
-    public DcMotor getElevator() {
-        return elevator;
+    public double getLeftElevator() {
+        return leftElevator.getCurrentPosition();
+    }
+
+    public double getRightElevator() {
+        return rightElevator.getCurrentPosition();
     }
 }

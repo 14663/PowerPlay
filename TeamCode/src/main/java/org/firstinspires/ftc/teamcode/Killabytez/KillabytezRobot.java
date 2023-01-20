@@ -6,24 +6,16 @@ public class KillabytezRobot {
 
     HardwareMap hardwareMap;
     DriveTrain drivetrain;
-    Claw claw;
+    VirtualFourBar v4b;
     Elevator elevator;
     Extender extender;
-    Bicep bicep;
-
     Bucket bucket;
-    VirtualFourBar v4b;
 
     public KillabytezRobot() {
     }
 
     public void init(HardwareMap hardwareMap) {
         this.hardwareMap=hardwareMap;
-    //    claw=new Claw(hardwareMap);
-      //  claw.init();
-
-   //     bicep=new Bicep(hardwareMap);
-   //     bicep.init();
 
         drivetrain=new DriveTrain(hardwareMap);
         drivetrain.init();
@@ -34,17 +26,17 @@ public class KillabytezRobot {
         extender=new Extender(hardwareMap);
         extender.init();
 
-      //  v4b=new V4B(hardwareMap);
-      //  v4b.init();
+        v4b=new VirtualFourBar(hardwareMap);
+        v4b.init();
 
-      ///  bucket=new Bucket(hardwareMap);
-      // bucket.init();
+        bucket=new Bucket(hardwareMap);
+        bucket.init();
     }
 
-    public Bicep getBicep() {return bicep;}
-    public Claw getClaw() {
-        return claw;
-    }
+    public VirtualFourBar getV4b() {return v4b;}
+
+    public Bucket getBucket() {return bucket;}
+
     public DriveTrain getDrivetrain() {
         return drivetrain;
     }

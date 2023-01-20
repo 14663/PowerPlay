@@ -3,7 +3,6 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
-import org.firstinspires.ftc.teamcode.Killabytez.Claw;
 import org.firstinspires.ftc.teamcode.Killabytez.DriveTrain;
 import org.firstinspires.ftc.teamcode.Killabytez.Elevator;
 import org.firstinspires.ftc.teamcode.Killabytez.Extender;

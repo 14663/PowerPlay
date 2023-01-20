@@ -6,6 +6,7 @@ import static org.firstinspires.ftc.teamcode.util.Constants.EXIT;
 import static org.firstinspires.ftc.teamcode.util.Constants.MECCY_BIAS;
 import static org.firstinspires.ftc.teamcode.util.Constants.angles;
 import static org.firstinspires.ftc.teamcode.util.Constants.gravity;
+import static org.firstinspires.ftc.teamcode.util.Constants.noPow;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
@@ -61,17 +62,17 @@ public class SafetyMovementAutoProcessor extends BaseProcessor {
         //
         while (frontleft.isBusy() && frontright.isBusy() && backleft.isBusy() && backright.isBusy()){
             if (EXIT){
-                frontright.setPower(0);
-                frontleft.setPower(0);
-                backright.setPower(0);
-                backleft.setPower(0);
+                frontright.setPower(noPow);
+                frontleft.setPower(noPow);
+                backright.setPower(noPow);
+                backleft.setPower(noPow);
                 return;
             }
         }
-        frontright.setPower(0);
-        frontleft.setPower(0);
-        backright.setPower(0);
-        backleft.setPower(0);
+        frontright.setPower(noPow);
+        frontleft.setPower(noPow);
+        backright.setPower(noPow);
+        backleft.setPower(noPow);
         return;
     }
     //
@@ -161,10 +162,10 @@ public class SafetyMovementAutoProcessor extends BaseProcessor {
                 getTelemetry().addData("second after", convertify(second));
                 getTelemetry().update();
             }
-            frontleft.setPower(0);
-            frontright.setPower(0);
-            backleft.setPower(0);
-            backright.setPower(0);
+            frontleft.setPower(noPow);
+            frontright.setPower(noPow);
+            backleft.setPower(noPow);
+            backright.setPower(noPow);
         }
         //
         frontleft.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -198,10 +199,10 @@ public class SafetyMovementAutoProcessor extends BaseProcessor {
         backright.setPower(speed);
         //
         while (frontleft.isBusy() && frontright.isBusy() && backleft.isBusy() && backright.isBusy()){}
-        frontright.setPower(0);
-        frontleft.setPower(0);
-        backright.setPower(0);
-        backleft.setPower(0);
+        frontright.setPower(noPow);
+        frontleft.setPower(noPow);
+        backright.setPower(noPow);
+        backleft.setPower(noPow);
         return;
     }
     //

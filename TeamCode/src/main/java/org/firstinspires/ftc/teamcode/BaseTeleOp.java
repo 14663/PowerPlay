@@ -5,8 +5,6 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
 import org.firstinspires.ftc.teamcode.Killabytez.KillabytezRobot;
 import org.firstinspires.ftc.teamcode.Processors.BaseProcessor;
-import org.firstinspires.ftc.teamcode.Processors.BicepTeleOpProcessor;
-import org.firstinspires.ftc.teamcode.Processors.ClawTeleOpProcessor;
 import org.firstinspires.ftc.teamcode.Processors.ElevatorTeleOpProcessor;
 import org.firstinspires.ftc.teamcode.Processors.ExtenderTeleOpProcessor;
 import org.firstinspires.ftc.teamcode.Processors.MovementTeleOpProcessor;
@@ -25,8 +23,6 @@ public class BaseTeleOp extends LinearOpMode {
         teleOpProcessors = Arrays.asList(
                 new ElevatorTeleOpProcessor(this),
                 new ExtenderTeleOpProcessor(this),
-                new ClawTeleOpProcessor(this),
-                new BicepTeleOpProcessor(this),
                 new MovementTeleOpProcessor(this)
         );
         killabytezRobot=new KillabytezRobot();

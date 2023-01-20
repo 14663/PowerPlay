@@ -8,6 +8,9 @@ import org.opencv.core.Point;
 import org.opencv.core.Scalar;
 
 public class Constants {
+    //power
+    public static final double noPow=0;
+
     //Defines encoder multipliers
     public static final double verticalRightMultiplier=1;
     public static final double verticalLeftMultiplier=1;
@@ -19,9 +22,7 @@ public class Constants {
     public static final double WHEEL_DIAMETER_INCHES = 1.49606;
 
     //claw constants
-    public static final double CLAW_OPEN=0.2;
-    public static final double CLAW_CLOSED=0.85;
-    public static final double WRIST_OPEN=0.8;
+    public static final double WRIST_OPEN=0.6;
     public static final double WRIST_CLOSED=0;
 
     //elevator constants
@@ -51,8 +52,11 @@ public class Constants {
     }
 
     //bicep constants
-    public static final double BICEP_OPEN=0;
-    public static final double BICEP_CLOSED=1;
+    public static final double LEFT_BICEP_OPEN=0.7;
+    public static final double LEFT_BICEP_CLOSED=-1;
+    public static final double RIGHT_BICEP_OPEN=-0.7;
+    public static final double RIGHT_BICEP_CLOSED=1;
+
     public static final double CLASP_CLOSED=0.3;
     public static final double CLASP_OPEN=0;
 
@@ -64,6 +68,13 @@ public class Constants {
     public static final Double CPI = (CPR * GEAR_RATIO)/(Math.PI * DIAMETER); //counts per inch, 28cpr * gear ratio / (2 * pi * diameter (in inches, in the center))
     public static final Double BIAS = 1.0;//default 0.8
     public static final Double MECCY_BIAS = 0.9;//change to adjust only strafing movement
+
+    public static final double OpenLeftClaw = 0.5;
+    public static final double OpenRightClaw = 1;
+
+    public static final double CloseLeftClaw = 1;
+    public static final double CloseRightClaw = 0.5;
+
     //
     public static final Double CONVERSION = CPI * BIAS;
     public static Boolean EXIT = false;

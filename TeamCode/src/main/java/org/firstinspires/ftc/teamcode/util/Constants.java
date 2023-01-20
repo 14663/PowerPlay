@@ -52,9 +52,9 @@ public class Constants {
     }
 
     //bicep constants
-    public static final double LEFT_BICEP_OPEN=0.7;
+    public static final double LEFT_BICEP_OPEN=1;
     public static final double LEFT_BICEP_CLOSED=-1;
-    public static final double RIGHT_BICEP_OPEN=-0.7;
+    public static final double RIGHT_BICEP_OPEN=-1;
     public static final double RIGHT_BICEP_CLOSED=1;
 
     public static final double CLASP_CLOSED=0.3;

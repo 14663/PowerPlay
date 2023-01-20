@@ -26,8 +26,45 @@ public class Extender {
         leftExtender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightExtender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
+        rightExtender.setDirection(DcMotor.Direction.REVERSE);
+
         leftExtender.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rightExtender.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+    }
+
+    public void extendingLeft(int encoderTicks, double power) {
+        int newLeftExtenderTarget = encoderTicks;
+
+        leftExtender.setTargetPosition(newLeftExtenderTarget);
+
+        leftExtender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        leftExtender.setPower(power);
+
+        while(leftExtender.isBusy()) {
+
+        }
+
+        leftExtender.setPower(0);
+
+        leftExtender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    }
+    public void  extendingRight(int encoderTicks, double power) {
+        int newRightExtenderTarget = encoderTicks;
+
+        rightExtender.setTargetPosition(newRightExtenderTarget);
+
+        rightExtender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        rightExtender.setPower(power);
+
+        while(rightExtender.isBusy()) {
+
+        }
+
+        rightExtender.setPower(0);
+
+        rightExtender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 
     public void extending(int encoderTicks, double power) {
@@ -64,6 +101,26 @@ public class Extender {
         rightExtender.setPower(power);
 
         leftExtender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        rightExtender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    }
+
+    public void resetLeft(double power) {
+        leftExtender.setTargetPosition(originPos);
+
+        leftExtender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        leftExtender.setPower(power);
+
+        leftExtender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    }
+
+    public void resetRight(double power) {
+        rightExtender.setTargetPosition(originPos);
+
+        rightExtender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        rightExtender.setPower(power);
+
         rightExtender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
 

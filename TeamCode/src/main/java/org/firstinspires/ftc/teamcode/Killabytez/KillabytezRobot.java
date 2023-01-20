@@ -12,26 +12,37 @@ public class KillabytezRobot {
     Extender extender;
     Bicep bicep;
 
+    Bucket bucket;
+    V4B v4b;
+
     public KillabytezRobot() {
     }
 
     public void init(HardwareMap hardwareMap) {
         this.hardwareMap=hardwareMap;
-        claw=new Claw(hardwareMap);
-        claw.init();
-        bicep=new Bicep(hardwareMap);
-        bicep.init();
+    //    claw=new Claw(hardwareMap);
+      //  claw.init();
+
+   //     bicep=new Bicep(hardwareMap);
+   //     bicep.init();
+
         drivetrain=new DriveTrain(hardwareMap);
         drivetrain.init();
+
         elevator=new Elevator(hardwareMap);
         elevator.init();
+
         extender=new Extender(hardwareMap);
         extender.init();
+
+      //  v4b=new V4B(hardwareMap);
+      //  v4b.init();
+
+      ///  bucket=new Bucket(hardwareMap);
+      // bucket.init();
     }
 
-    public Bicep getBicep() {
-        return bicep;
-    }
+    public Bicep getBicep() {return bicep;}
     public Claw getClaw() {
         return claw;
     }

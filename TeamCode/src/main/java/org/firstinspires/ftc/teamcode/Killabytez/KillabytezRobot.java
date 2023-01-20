@@ -1,19 +1,16 @@
 package org.firstinspires.ftc.teamcode.Killabytez;
 
-import com.acmerobotics.roadrunner.drive.Drive;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class KillabytezRobot {
 
     HardwareMap hardwareMap;
     DriveTrain drivetrain;
-    Claw claw;
     Elevator elevator;
     Extender extender;
-    Bicep bicep;
 
     Bucket bucket;
-    V4B v4b;
+    VirtualFourBar v4b;
 
     public KillabytezRobot() {
     }
@@ -35,17 +32,13 @@ public class KillabytezRobot {
         extender=new Extender(hardwareMap);
         extender.init();
 
-      //  v4b=new V4B(hardwareMap);
-      //  v4b.init();
+        v4b=new VirtualFourBar(hardwareMap);
+        v4b.init();
 
-      ///  bucket=new Bucket(hardwareMap);
-      // bucket.init();
+        bucket=new Bucket(hardwareMap);
+        bucket.init();
     }
 
-    public Bicep getBicep() {return bicep;}
-    public Claw getClaw() {
-        return claw;
-    }
     public DriveTrain getDrivetrain() {
         return drivetrain;
     }
@@ -57,4 +50,8 @@ public class KillabytezRobot {
     public Extender getExtender() {
         return extender;
     }
+
+    public VirtualFourBar getV4b() {return v4b;}
+
+    public Bucket getBucket() {return bucket;}
 }

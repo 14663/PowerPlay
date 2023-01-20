@@ -21,6 +21,15 @@ public class V4B_TeleOp extends LinearOpMode {
             if(gamepad1.dpad_right) v4b.closeBicep();
             if(gamepad1.dpad_up) v4b.openWrist();
             if(gamepad1.dpad_down) v4b.closeWrist();
+            if(gamepad1.a) {
+                v4b.closeClaw();
+                sleep(500);
+                v4b.closeBicep();
+                sleep(500);
+                v4b.openWrist();
+                sleep(500);
+                v4b.openClaw();
+            }
             sleep(50);
         }
     }

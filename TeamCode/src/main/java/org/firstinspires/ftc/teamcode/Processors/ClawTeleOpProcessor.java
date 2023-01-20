@@ -25,7 +25,7 @@ public class ClawTeleOpProcessor extends BaseProcessor {
             getKillabytezRobot().getClaw().closeWrist();
             getKillabytezRobot().getClaw().openClaw();
             getKillabytezRobot().getExtender().extending(EXTENDER_OUT_TICKS, EXTENDER_OUT_POWER);
-            while(getKillabytezRobot().getExtender().getExtender().isBusy()) {
+            while(getKillabytezRobot().getExtender().isBusy()) {
 
             }
             getKillabytezRobot().getClaw().closeWrist();
@@ -34,7 +34,8 @@ public class ClawTeleOpProcessor extends BaseProcessor {
         }
         if(getGamepad(2).left_trigger>0 && extended) {
             getKillabytezRobot().getExtender().extending(EXTENDER_IN_TICKS, EXTENDER_IN_POWER);
-            while(getKillabytezRobot().getExtender().getExtender().isBusy()) {
+            while(getKillabytezRobot().getExtender().isBusy()) {
+
             }
             getKillabytezRobot().getClaw().openWrist();
             getKillabytezRobot().getBicep().closeClasp();

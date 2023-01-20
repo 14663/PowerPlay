@@ -1,6 +1,5 @@
 package org.firstinspires.ftc.teamcode.Killabytez;
 
-import com.acmerobotics.roadrunner.drive.Drive;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
 public class KillabytezRobot {
@@ -13,7 +12,7 @@ public class KillabytezRobot {
     Bicep bicep;
 
     Bucket bucket;
-    V4B v4b;
+    VirtualFourBar v4b;
 
     public KillabytezRobot() {
     }

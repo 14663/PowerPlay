@@ -4,6 +4,8 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorEx;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 
+import java.util.List;
+
 public class Extender {
     DcMotorEx leftExtender;
     DcMotorEx rightExtender;
@@ -83,7 +85,6 @@ public class Extender {
 
         }
 
-
         leftExtender.setPower(noPow);
         rightExtender.setPower(noPow);
 
@@ -99,6 +100,13 @@ public class Extender {
 
         leftExtender.setPower(power);
         rightExtender.setPower(power);
+
+        while(leftExtender.isBusy() && rightExtender.isBusy()) {
+
+        }
+
+        leftExtender.setPower(noPow);
+        rightExtender.setPower(noPow);
 
         leftExtender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         rightExtender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
@@ -142,7 +150,11 @@ public class Extender {
 
     }
 
-    public DcMotor getExtender() {
-        return leftExtender;
+    public DcMotor[] getExtenders() {
+        return new DcMotorEx[] {leftExtender, rightExtender};
+    }
+
+    public boolean isBusy() {
+        return leftExtender.isBusy() || rightExtender.isBusy();
     }
 }

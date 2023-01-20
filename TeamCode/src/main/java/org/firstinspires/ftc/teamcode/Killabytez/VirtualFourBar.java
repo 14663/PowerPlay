@@ -3,7 +3,7 @@ package org.firstinspires.ftc.teamcode.Killabytez;
 import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
-public class V4B {
+public class VirtualFourBar {
 
     private Servo leftClaw;
 
@@ -18,7 +18,7 @@ public class V4B {
 
     private HardwareMap hardwareMap;
 
-    public V4B(HardwareMap hardwareMap) {
+    public VirtualFourBar(HardwareMap hardwareMap) {
        this.hardwareMap = hardwareMap;
     }
 

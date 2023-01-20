@@ -72,8 +72,8 @@ public class Extender {
     public void extending(int encoderTicks, double power) {
         int newLeftLiftTarget = encoderTicks;
 
-        leftExtender.setTargetPosition(newLeftLiftTarget+ leftExtender.getCurrentPosition());
-        rightExtender.setTargetPosition(newLeftLiftTarget + rightExtender.getCurrentPosition());
+        leftExtender.setTargetPosition(newLeftLiftTarget);
+        rightExtender.setTargetPosition(newLeftLiftTarget);
 
         leftExtender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         rightExtender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
@@ -92,8 +92,8 @@ public class Extender {
         rightExtender.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
     }
     public void reset(double power) {
-        leftExtender.setTargetPosition(originPos);
-        rightExtender.setTargetPosition(originPos);
+        leftExtender.setTargetPosition(0);
+        rightExtender.setTargetPosition(0);
 
         leftExtender.setMode(DcMotor.RunMode.RUN_TO_POSITION);
         rightExtender.setMode(DcMotor.RunMode.RUN_TO_POSITION);

@@ -50,8 +50,44 @@ public class Elevator {
         rightElevator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
 
+
     }
 
+    public void liftingLeft(int encoderTicks, double power) {
+        int newLeftLiftTarget = encoderTicks;
+
+        leftElevator.setTargetPosition(newLeftLiftTarget);
+
+        leftElevator.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        leftElevator.setPower(power);
+
+        while(leftElevator.isBusy()) {
+
+        }
+
+        leftElevator.setPower(0);
+
+        leftElevator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    }
+
+    public void liftingRight(int encoderTicks, double power) {
+        int newRightLiftTarget = encoderTicks;
+
+        rightElevator.setTargetPosition(newRightLiftTarget);
+
+        rightElevator.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+        rightElevator.setPower(power);
+
+        while(rightElevator.isBusy()) {
+
+        }
+
+        rightElevator.setPower(0);
+
+        rightElevator.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+    }
 
 
 

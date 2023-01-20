@@ -6,7 +6,8 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import org.firstinspires.ftc.teamcode.Killabytez.KillabytezRobot;
 
 @Autonomous
-public class ExtenderTestingNoPID extends LinearOpMode {
+public class bucketTest extends LinearOpMode {
+
     KillabytezRobot robot = new KillabytezRobot();
     @Override
     public void runOpMode() throws InterruptedException {
@@ -14,14 +15,13 @@ public class ExtenderTestingNoPID extends LinearOpMode {
 
         waitForStart();
 
-        //run the left extender
-        robot.getExtender().extending(1000, 0.5);
-        sleep(500);
-        robot.getExtender().extending(0, 0.5);
+        robot.getBucket().openServo();
+        sleep(5000);
+        robot.getBucket().closeServo();
+        sleep(5000);
+        robot.getBucket().openServo();
 
-        }
+
+    }
 }
-
-
-
 

@@ -4,10 +4,10 @@ import com.qualcomm.robotcore.hardware.HardwareMap;
 import com.qualcomm.robotcore.hardware.Servo;
 
 public class Bucket {
-    private Servo arm;
+     Servo arm;
 
-    private int openPos = 1;
-    private int closedPos = 0;
+    private int openPos = 0;
+    private int closedPos = 1;
     private HardwareMap hardwareMap;
 
     public Bucket(HardwareMap hardwareMap) {
@@ -23,4 +23,9 @@ public class Bucket {
     public void closeServo() {
         arm.setPosition(closedPos);
     }
+
+    public void setPos(double pos) {
+        arm.setPosition(pos);
+    }
 }
+

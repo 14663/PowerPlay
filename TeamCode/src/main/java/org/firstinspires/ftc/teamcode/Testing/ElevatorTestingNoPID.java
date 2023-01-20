@@ -1,13 +1,19 @@
 package org.firstinspires.ftc.teamcode.Testing;
 
+import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import org.firstinspires.ftc.teamcode.Killabytez.KillabytezRobot;
 
 @Autonomous
+@Config
+
+
 
 public class ElevatorTestingNoPID extends LinearOpMode {
+    public static double pow = 0.5;
+    public static int pos = 1600;
     KillabytezRobot robot = new KillabytezRobot();
     @Override
     public void runOpMode() throws InterruptedException {
@@ -16,8 +22,34 @@ public class ElevatorTestingNoPID extends LinearOpMode {
         waitForStart();
 
         //run the left extender
-        robot.getElevator().lifting(500, 0.1);
-        robot.getElevator().reset(0.1);
+        robot.getElevator().lifting(pos,pow);
+
+        robot.getElevator().lifting(0,pow);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         }
 }

@@ -23,8 +23,11 @@ public class ElevatorTestingNoPID extends LinearOpMode {
 
         //run the left extender
         robot.getElevator().lifting(pos,pow);
-
+        robot.getBucket().openServo();
+        sleep(3000);
+        robot.getBucket().closeServo();;
         robot.getElevator().lifting(0,pow);
+
 
 
 

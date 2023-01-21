@@ -5,6 +5,7 @@ import static org.firstinspires.ftc.teamcode.util.Constants.EXTENDER_IN_POWER;
 import static org.firstinspires.ftc.teamcode.util.Constants.EXTENDER_IN_TICKS;
 import static org.firstinspires.ftc.teamcode.util.Constants.EXTENDER_OUT_POWER;
 import static org.firstinspires.ftc.teamcode.util.Constants.EXTENDER_OUT_TICKS;
+import static org.firstinspires.ftc.teamcode.util.Constants.extenderOut;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
@@ -38,7 +39,7 @@ public class IntakeTeleOpProcessor extends BaseProcessor {
         if(getGamepad(2).dpad_up) v4b.openWrist();
         if(getGamepad(2).dpad_down) v4b.closeWrist();
         if(getGamepad(2).a) {
-            extender.extending(1900, 0.7);
+            extender.extending(extenderOut, 0.7);
             sleep(500);
             v4b.closeClaw();
             extender.reset(0.7);

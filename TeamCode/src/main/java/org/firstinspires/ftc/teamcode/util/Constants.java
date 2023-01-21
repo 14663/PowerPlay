@@ -71,6 +71,8 @@ public class Constants {
 
     public static final int posHighElevator=1600;
 
+    public static final int extenderOut=1500;
+
     public static final int openPosBucket = 0;
     public static final int closedPosBucket = 1;
 

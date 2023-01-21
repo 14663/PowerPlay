@@ -1,5 +1,7 @@
 package org.firstinspires.ftc.teamcode.Testing;
 
+import static org.firstinspires.ftc.teamcode.util.Constants.extenderOut;
+
 import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
@@ -28,7 +30,7 @@ public class V4B_TeleOp extends LinearOpMode {
             if(gamepad1.dpad_up) v4b.openWrist();
             if(gamepad1.dpad_down) v4b.closeWrist();
             if(gamepad1.a) {
-                extender.extending(1900, 0.7);
+                extender.extending(extenderOut, 0.7);
                 sleep(500);
                 v4b.closeClaw();
                 extender.reset(0.7);

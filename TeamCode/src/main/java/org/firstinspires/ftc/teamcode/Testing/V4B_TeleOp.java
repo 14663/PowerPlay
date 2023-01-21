@@ -1,9 +1,10 @@
-package org.firstinspires.ftc.teamcode.Processors;
+package org.firstinspires.ftc.teamcode.Testing;
 
 import com.acmerobotics.dashboard.config.Config;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 
+import org.firstinspires.ftc.teamcode.Killabytez.Extender;
 import org.firstinspires.ftc.teamcode.Killabytez.VirtualFourBar;
 
 @Config
@@ -13,6 +14,11 @@ public class V4B_TeleOp extends LinearOpMode {
     public void runOpMode() throws InterruptedException {
         VirtualFourBar v4b=new VirtualFourBar(hardwareMap);
         v4b.init();
+        Extender extender=new Extender(hardwareMap);
+        extender.init();
+        v4b.closeWrist();
+        v4b.openBicep();
+        v4b.openClaw();
         waitForStart();
         while(opModeIsActive()) {
             if(gamepad1.left_bumper) v4b.openClaw();
@@ -22,12 +28,20 @@ public class V4B_TeleOp extends LinearOpMode {
             if(gamepad1.dpad_up) v4b.openWrist();
             if(gamepad1.dpad_down) v4b.closeWrist();
             if(gamepad1.a) {
+                extender.extending(1900, 0.7);
+                sleep(500);
                 v4b.closeClaw();
+                extender.reset(0.7);
                 sleep(500);
                 v4b.closeBicep();
                 sleep(500);
                 v4b.openWrist();
+                sleep(600);
+                v4b.openClaw();
                 sleep(500);
+                v4b.closeClaw();
+                v4b.closeWrist();
+                v4b.openBicep();
                 v4b.openClaw();
             }
             sleep(50);

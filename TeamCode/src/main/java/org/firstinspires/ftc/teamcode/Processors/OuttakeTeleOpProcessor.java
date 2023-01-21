@@ -28,7 +28,7 @@ public class OuttakeTeleOpProcessor extends BaseProcessor {
 
     @Override
     public void process() {
-        if(getGamepad(2).y) bucket.openServo();
+        if( getGamepad(2).y) bucket.openServo();
         if(getGamepad(2).x) bucket.closeServo();
         if(getGamepad(2).right_stick_button) elevator.lifting(posHighElevator, 0.7);
         if(getGamepad(2).left_stick_button) elevator.reset(0.7);

@@ -42,6 +42,7 @@ public class IntakeTeleOpProcessor extends BaseProcessor {
             extender.extending(extenderOut, 0.7);
             sleep(750);
             v4b.closeClaw();
+            sleep(500);
             extender.reset(0.7);
             sleep(500);
             v4b.closeBicep();

@@ -23,7 +23,7 @@ public class OuttakeTeleOpProcessor extends BaseProcessor {
     public void init() {
         elevator=getKillabytezRobot().getElevator();
         bucket=getKillabytezRobot().getBucket();
-        bucket.openServo();
+        bucket.closeServo();
     }
 
     @Override
@@ -31,6 +31,14 @@ public class OuttakeTeleOpProcessor extends BaseProcessor {
         if(getGamepad(2).y) bucket.openServo();
         if(getGamepad(2).x) bucket.closeServo();
         if(getGamepad(2).right_stick_button) elevator.lifting(posHighElevator, 0.7);
-        if(getGamepad(2).left_stick_button) elevator.lifting(0, 0.7);
+        if(getGamepad(2).left_stick_button) elevator.reset(0.7);
+        if(getGamepad(2).b) {
+            elevator.lifting(posHighElevator, 0.7);
+            bucket.openServo();
+            sleep(500);
+            bucket.closeServo();
+            sleep(500);
+            elevator.reset(0.7);
+        }
     }
 }

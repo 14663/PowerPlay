@@ -40,7 +40,7 @@ public class IntakeTeleOpProcessor extends BaseProcessor {
         if(getGamepad(2).dpad_down) v4b.closeWrist();
         if(getGamepad(2).a) {
             extender.extending(extenderOut, 0.7);
-            sleep(500);
+            sleep(750);
             v4b.closeClaw();
             extender.reset(0.7);
             sleep(500);

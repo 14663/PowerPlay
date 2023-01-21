@@ -10,7 +10,7 @@ import org.openftc.easyopencv.OpenCvCameraFactory;
 import org.openftc.easyopencv.OpenCvCameraRotation;
 import org.openftc.easyopencv.OpenCvWebcam;
 
-@Autonomous(name="OpenCVTest", group="teleop")
+@Autonomous(name="CVTest", group="teleop")
 public class DetectionTest extends LinearOpMode {
     OpenCvWebcam webcam;
 
@@ -25,7 +25,7 @@ public class DetectionTest extends LinearOpMode {
             @Override
             public void onOpened()
             {
-                webcam.startStreaming(640, 360, OpenCvCameraRotation.UPRIGHT);
+                webcam.startStreaming(640, 480, OpenCvCameraRotation.UPRIGHT);
             }
             @Override
             public void onError(int errorCode)

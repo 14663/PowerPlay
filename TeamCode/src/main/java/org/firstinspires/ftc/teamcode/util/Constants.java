@@ -69,9 +69,9 @@ public class Constants {
     public static final Double BIAS = 1.0;//default 0.8
     public static final Double MECCY_BIAS = 0.9;//change to adjust only strafing movement
 
-    public static final int posHighElevator=1600;
+    public static final int posHighElevator=1750;
 
-    public static final int extenderOut=1500;
+    public static final int extenderOut=1000;
 
     public static final int openPosBucket = 0;
     public static final int closedPosBucket = 1;

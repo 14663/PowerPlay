@@ -23,7 +23,7 @@ public class OuttakeTeleOpProcessor extends BaseProcessor {
     public void init() {
         elevator=getKillabytezRobot().getElevator();
         bucket=getKillabytezRobot().getBucket();
-        bucket.openServo();
+        bucket.closeServo();
     }
 
     @Override
